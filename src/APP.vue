@@ -1,21 +1,34 @@
 <template>
      <div id="app">
-        <h1>{{msg}}</h1>
-        <hello></hello>
+         <h2>{{msg}}</h2>
+        <my-input></my-input>
+        <todo-list :todos=todos></todo-list>
      </div>
 </template>
 
 <script>    
-import Hello from './components/Hello.vue';
+import MyInput from './components/Input.vue';
+import TodoList from './components/TodoList.vue';
+import {eventHub} from './components/EventHub.js';
 export default {
     name : 'app',
     data () {
         return {
-            msg: 'TodoMVC-Vue2.x'
+            todos : ['abc'],
+            msg:'Vue2.x TodoMVC'
+        }
+    },
+    created(){
+        eventHub.$on('add-todo',this.addTodo)
+    },
+    methods : {
+        addTodo(newTodo){
+            this.todos.push(newTodo)
         }
     },
     components :{
-        Hello
+        MyInput,
+        TodoList
     }
 }
 </script>
