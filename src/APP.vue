@@ -12,13 +12,20 @@ import MyInput from './components/Input.vue';
 import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
 import {eventHub} from './components/EventHub.js';
+import Storage from './Storage.js';
 export default {
     name : 'app',
     data () {
         return {
-            todos : [],
+            todos : Storage.fetch(),
             filter : 'all',
             msg:'Vue2.x TodoMVC'
+        }
+    },
+    watch : {
+        todos : {
+            deep: true,
+            handler: Storage.store
         }
     },
     created(){
@@ -28,9 +35,11 @@ export default {
     methods : {
         addTodo(newTodo){
             this.todos.push({value:newTodo,completed:false})
+            Storage.store(this.todos)
         },
         setFilter(newfilter){
             this.filter = newfilter
+            Storage.store(this.todos)
         }
     },
     components :{
