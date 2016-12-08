@@ -1,8 +1,8 @@
 <template>
     <div class="footer">
-        <button @click="setFilter('all')">All</button>
-        <button @click="setFilter('active')">Active</button>
-        <button @click="setFilter('completed')">Completed</button>
+        <el-button @click="setFilter('all')">All</el-button>
+        <el-button @click="setFilter('active')">Active</el-button>
+        <el-button @click="setFilter('completed')">Completed</el-button>
     </div>
 </template>
 <script>
@@ -19,5 +19,9 @@
 <style>
     ul li{
         list-style-type: none
+    }
+    .footer{
+        border-top:1px solid #eee;
+        padding-top: 10px;
     }
 </style>

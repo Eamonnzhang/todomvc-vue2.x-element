@@ -1,14 +1,18 @@
 <template>
      <div id="app">
-         <h2>{{msg}}</h2>
-        <my-input></my-input>
+        <el-card class="box-card">
+        <div slot="header" class="clearfix">
+            <div class="h1">{{msg}}</div>
+            <todo-input></todo-input>
+        </div>
         <todo-list :todos="todos" :filter="filter"></todo-list>
         <todo-footer></todo-footer>
+        </el-card>
      </div>
 </template>
 
 <script>    
-import MyInput from './components/Input.vue';
+import TodoInput from './components/Input.vue';
 import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
 import {eventHub} from './components/EventHub.js';
@@ -34,6 +38,11 @@ export default {
     },
     methods : {
         addTodo(newTodo){
+            if(!newTodo){
+                console.log(this.$refs);
+                this.$refs.todoInput.click()
+                return;
+            }
             this.todos.push({value:newTodo,completed:false})
             Storage.store(this.todos)
         },
@@ -43,7 +52,7 @@ export default {
         }
     },
     components :{
-        MyInput,
+        TodoInput,
         TodoList,
         TodoFooter
     }
@@ -51,5 +60,19 @@ export default {
 </script>
 
 <style lang="sass"> 
-
+    body{
+        background-color: #F9FAFC;
+    }
+    #app{
+        width: 560px;
+        margin: 0 auto;
+        font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    }
+    .h1{
+        color: #5e6d82;
+        font-size : 20px;
+        text-align : center;
+        padding: 20px 0;
+    }
+   
 </style>
