@@ -1,8 +1,8 @@
 <template>
     <div class="footer">
-        <el-button @click="setFilter('all')">All</el-button>
-        <el-button @click="setFilter('active')">Active</el-button>
-        <el-button @click="setFilter('completed')">Completed</el-button>
+        <el-button size="small" @click="setFilter('all')" :autofocus="true" :plain="true" type="info">All</el-button>
+        <el-button size="small" @click="setFilter('active')">Active</el-button>
+        <el-button size="small" @click="setFilter('completed')">Completed</el-button>
     </div>
 </template>
 <script>

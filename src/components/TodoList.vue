@@ -39,7 +39,7 @@
 <style lang="sass">
    
     #todoList{
-        height: 450px;
+        max-height: 350px;
         position: relative;
         padding: 0 20px 0 5px;
     }

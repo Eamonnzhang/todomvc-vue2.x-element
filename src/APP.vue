@@ -23,7 +23,7 @@ export default {
         return {
             todos : Storage.fetch(),
             filter : 'all',
-            msg:'Vue2.x TodoMVC'
+            msg:'Vue2.x+Element   TodoMVC'
         }
     },
     watch : {
