@@ -1,16 +1,12 @@
 <template>
     <div class="km-todolist">
-        <ol>
-            <li v-for="(item,index) in filterTodos" :class="{complete:item.completed}">
-                <span>{{item.value}}</span>
-                <button @click="removeTodo(index)">删除</button>
-                <button @click="toggleTodo(item)" :class="{complete:item.completed}">完成</button>
-            </li>        
-        </ol>
+        <ul id="todoList">
+            <todo-item v-for="(todo,index) in filterTodos" :todos="todos" :todo="todo" :index="index"></todo-item>
+        </ul>
     </div>
 </template>
-
 <script>
+    import TodoItem from './TodoItem.vue'
     let filter = {
         all:function(todos){
             return todos;
@@ -29,29 +25,22 @@
     export default {
         name : 'todo-list',
         props : ['todos','filter'],
-        methods : {
-            removeTodo(index){
-                this.todos.splice(index,1)
-            },
-            toggleTodo(item){
-                item.completed = !item.completed
-            }
-        },
         computed : {
             filterTodos(){
                 return filter[this.filter](this.todos)
             }
-        }
+        },
+        components : {
+            TodoItem
+        },
     }
 </script>
 
 <style lang="sass">
-    li.complete{
-        span{
-            text-decoration: line-through;
-        }
-    }
-    button.complete{
-        background-color: #fff;
+   
+    #todoList{
+        height: 450px;
+        position: relative;
+        padding: 0 20px 0 5px;
     }
 </style>
