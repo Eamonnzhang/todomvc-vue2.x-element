@@ -14,8 +14,16 @@ module.exports = {
                 test : /\.vue$/,
                 loader : 'vue-loader',
                 options : {
-                     scss: 'style!css!sass'
+                     
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                loader: 'file-loader'
             },
             {
                 test : /\.js$/,
