@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Eamonnzhang/TodoMVC-vue2.x#readme",
   "dependencies": {
-    "element-ui": "^1.0.5",
+    "element-ui": "^1.2.9",
     "perfect-scrollbar": "^0.6.15",
     "vue": "^2.1.4"
   },

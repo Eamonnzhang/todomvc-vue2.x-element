@@ -11,7 +11,7 @@
         props:['todo','todos','index'],
         methods : {
             removeTodo(index){
-                this.todos.splice(index,1)
+                this.todos.splice(this.todos.indexOf(this.todo),1)
             }
         }
     }
